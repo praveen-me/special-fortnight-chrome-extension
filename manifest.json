@@ -1,0 +1,15 @@
+{
+  "name": "AltCampus New Tab Extension",
+  "description" : "AltCampus Personalised New Tab Chrome Extension",
+  "version": "1.0",
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "index.html",
+    "default_title": "New Tab ",
+    "default_icon": "/img/altcampus.png"
+  },
+  "chrome_url_overrides":{
+    "newtab" : "index.html"
+  },
+  "permissions": ["activeTab"]
+}
