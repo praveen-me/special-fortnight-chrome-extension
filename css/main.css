@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+@import url("https://fonts.googleapis.com/css?family=Dosis:300,400,500,600");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -74,12 +75,75 @@ body {
 
 .main {
   display: grid;
-  grid-template-columns: 3fr 1fr; }
+  grid-template-columns: 3fr 1.5fr; }
 
-.todo-list {
-  background-color: #fff; }
+.todo_list_header {
+  font-family: "Dosis", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 1rem 0; }
 
 .todo_list_item {
-  display: flex; }
+  display: grid;
+  background-color: #fff;
+  line-height: 3rem;
+  margin: 1rem 0;
+  grid-template-columns: 1fr 12fr 1fr;
+  align-items: center;
+  font-size: 1.5rem;
+  font-family: "Dosis", sans-serif;
+  border-radius: 5px; }
+
+.delete {
+  color: #e40b0b;
+  font-weight: 600;
+  display: none; }
+
+.todo_list_item:hover .delete {
+  display: block; }
+
+.done {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+  margin-left: 15px; }
+
+.done.true .todo_work {
+  font-weight: normal;
+  color: green; }
+
+.todo_work {
+  padding-left: 15px; }
+
+.todo_block {
+  padding: 1.5rem;
+  width: 375px;
+  margin: 0 auto; }
+
+.add_task_block {
+  display: flex;
+  height: 40px;
+  justify-content: center; }
+
+.task_value {
+  width: 275px;
+  font-size: 1.1rem;
+  padding-left: 10px;
+  border: none;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px; }
+
+.task_add_btn {
+  width: 100px;
+  font-size: 1.1rem;
+  background: #b53f58;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 5px; }
+
+.task_add_btn:focus, .task_value:focus {
+  outline: none; }
 
 /*# sourceMappingURL=main.css.map */

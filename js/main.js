@@ -1,4 +1,4 @@
-// document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
 
   // add task button  
   let addTaskBtn = document.getElementById('add-task');
@@ -43,9 +43,13 @@
     checkBoxes.forEach(checkBox => {
       if(checkBox.classList.contains(true)) {
         checkBox.setAttribute('checked', '');
-        checkBox.nextElementSibling.style.textDecoration = 'line-through';
+        // checkBox.nextElementSibling.style.textDecoration = 'line-through';
+        checkBox.nextElementSibling.style.cssText = 
+        "text-decoration : line-through; font-weight : normal";
       } else { // else it has false then set to default
-        checkBox.nextElementSibling.style.textDecoration = 'none';
+        // checkBox.nextElementSibling.style.textDecoration = 'none';
+        checkBox.nextElementSibling.style.cssText = 
+        "text-decoration : none; font-weight : bold";
       }
     });
   }
@@ -139,4 +143,4 @@
   }
 
   init();                         
-// });
+});
