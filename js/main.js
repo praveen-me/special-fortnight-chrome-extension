@@ -12,6 +12,20 @@
   // Stores Parsed Array
   let parsedArray = JSON.parse
   (localStorage.getItem('todoTasks'));
+
+
+  // Check Done Items When Page loads
+  let checkDoneItems = function() {
+    let checkBoxes = document.querySelectorAll('.done');
+
+    checkBoxes.forEach(checkBox => {
+      if(checkBox.classList.contains(true)) {
+        checkBox.setAttribute('checked', '');
+        checkBox.setAttribute('disabled', '');
+        checkBox.nextElementSibling.style.textDecoration = 'line-through';
+      }
+    });
+  }
   
   // function for Displaying to do list
   let display = function(array, elm) {
@@ -28,6 +42,9 @@
         `
       )
     }).join(''); // Join the array and convert it in a string and then addd to the element
+
+    checkDoneItems();
+  
   }
 
   // Check if something presents in local Storage
@@ -56,29 +73,37 @@
     // Immediately Display the List
       display(tasks, todoListElement);
 
+      document.getElementById('task-value').value = '';
   }
 
-  // deleteTask from the toDo List
-  let deleteTask = function(e) {
+  // deleteTask from the toDo List and also add done functionality
+  let deleteAndDoneTask = function(e) {
     // Prevent the Default behaviour of the target
-    e.preventDefault();
+    
+    let id = e.target.parentElement.dataset.id;
 
     // Check if the class name is not delete then exit the function else delete the item
-    if(!e.target.className === 'delete') {
-      return;
+    if(e.target.className === 'delete') {
+      e.preventDefault();
+    
+      // 2- Delete the item
+      tasks.splice(id, 1);
+
+      // 3 - Append the current tasks in the local storage
+      localStorage.setItem('todoTasks', JSON.stringify(tasks));
+
+      display(tasks, todoListElement);
+
+    } else if(e.target.checked === true) {
+      tasks[id].done = true;
+
+      // 3 - Append the current tasks in the local storage
+      localStorage.setItem('todoTasks', JSON.stringify(tasks));
+
+      display(tasks, todoListElement);
     }
 
-    // 1 - Storing the id of targeted element
-    let id = e.target.parentElement.dataset.id;
     
-    // 2- Delete the item
-    tasks.splice(id, 1);
-    
-    // 3 - Append the current tasks in the local storage
-    localStorage.setItem('todoTasks', JSON.stringify(tasks));
-
-    // Display the elments after deleting them
-    display(tasks, todoListElement);
   }
 
   // Initialized function
@@ -89,10 +114,9 @@
     // add a eventlistener to add task
     addTaskBtn.addEventListener('click',  addTask);
 
-    //Add event listner on ul to deleteBooks 
-    todoListElement.addEventListener('click', deleteTask);
+    //Add event listner on ul to deleteBooks and checked for done task
+    todoListElement.addEventListener('click', deleteAndDoneTask);
   }
 
-  init();
-
+  init();                         
 // });
