@@ -4,6 +4,24 @@
 //Base 
 @import "base";
 
-h1 {
-  max-width: 500px;
+body {
+  background: url('../img/background.jpg');
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+
+// Todo list
+.todo-list {
+  background-color: #fff;
+}
+
+.todo_list_item {
+  display: flex;
 }

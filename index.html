@@ -8,7 +8,26 @@
   <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
 </head>
 <body>
-  <div>Hello Praveen</div>
+  <!-- Main Block -->
+  <main class="main">
+    <div class="greet_block">jljid</div>
+    <!-- Todo List -->
+    <div class="todo_block">
+      <div class="todo_list_block">
+        <h2 class="todo_list_header">To DO List</h2>
+        <!-- Dynamically Todo List -->
+        <ul class="todo-list">
+        </ul>
+        <!-- Block for Adding New Task -->
+        <div class="add_task_block">
+          <input type="text" class="task_value" id="task-value">
+          <button class="task_add_btn" id="add-task">Add Task</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Script -->
   <script type="module" src="./js/main.js"></script>
 </body>
 </html>
