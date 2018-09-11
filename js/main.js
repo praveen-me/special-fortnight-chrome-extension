@@ -16,19 +16,19 @@
   // function for Displaying to do list
   let display = function(array, elm) {
     // Put content through innerHTML by innerHTML and map the array
-    elm.innerHTML = array.map( (item) => {
+    elm.innerHTML = array.map( (item, i) => {
       // Return the Elemnt String
       return (
         `
-        <li class="todo_list_item">
+        <li class="todo_list_item" data-id="${i}">
           <input type="checkbox" class="done ${item.done}">
           <div class="todo_work">${item.task}</div>
+          <a href="" class="delete">X</a>
         </li>
         `
       )
     }).join(''); // Join the array and convert it in a string and then addd to the element
   }
-
 
   // Check if something presents in local Storage
   if(parsedArray) {
@@ -58,8 +58,28 @@
 
   }
 
-  
+  // deleteTask from the toDo List
+  let deleteTask = function(e) {
+    // Prevent the Default behaviour of the target
+    e.preventDefault();
 
+    // Check if the class name is not delete then exit the function else delete the item
+    if(!e.target.className === 'delete') {
+      return;
+    }
+
+    // 1 - Storing the id of targeted element
+    let id = e.target.parentElement.dataset.id;
+    
+    // 2- Delete the item
+    tasks.splice(id, 1);
+    
+    // 3 - Append the current tasks in the local storage
+    localStorage.setItem('todoTasks', JSON.stringify(tasks));
+
+    // Display the elments after deleting them
+    display(tasks, todoListElement);
+  }
 
   // Initialized function
   function init() {  
@@ -68,6 +88,9 @@
 
     // add a eventlistener to add task
     addTaskBtn.addEventListener('click',  addTask);
+
+    //Add event listner on ul to deleteBooks 
+    todoListElement.addEventListener('click', deleteTask);
   }
 
   init();
