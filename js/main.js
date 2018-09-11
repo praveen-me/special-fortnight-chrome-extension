@@ -13,20 +13,6 @@
   let parsedArray = JSON.parse
   (localStorage.getItem('todoTasks'));
 
-
-  // Check Done Items When Page loads
-  let checkDoneItems = function() {
-    let checkBoxes = document.querySelectorAll('.done');
-
-    checkBoxes.forEach(checkBox => {
-      if(checkBox.classList.contains(true)) {
-        checkBox.setAttribute('checked', '');
-        checkBox.setAttribute('disabled', '');
-        checkBox.nextElementSibling.style.textDecoration = 'line-through';
-      }
-    });
-  }
-  
   // function for Displaying to do list
   let display = function(array, elm) {
     // Put content through innerHTML by innerHTML and map the array
@@ -43,14 +29,36 @@
       )
     }).join(''); // Join the array and convert it in a string and then addd to the element
 
+    // Call checkDoneItems for checking items are done or not
     checkDoneItems();
   
   }
 
+  // Check Done Items When Page loads
+  let checkDoneItems = function() {
+    //Select all checkboxes
+    let checkBoxes = document.querySelectorAll('.done');
+
+    // Check all checkbox if it has true class then confirm done
+    checkBoxes.forEach(checkBox => {
+      if(checkBox.classList.contains(true)) {
+        checkBox.setAttribute('checked', '');
+        checkBox.nextElementSibling.style.textDecoration = 'line-through';
+      } else { // else it has false then set to default
+        checkBox.nextElementSibling.style.textDecoration = 'none';
+      }
+    });
+  }
+  
   // Check if something presents in local Storage
   if(parsedArray) {
     tasks = parsedArray;
     display(tasks, todoListElement); 
+  }
+
+  //function to set item to local storage
+  let setItemsToLocalStorage = function() {
+    localStorage.setItem('todoTasks', JSON.stringify(tasks));
   }
 
   // function for adding task
@@ -68,18 +76,19 @@
     tasks.push(taskItem);
 
     // 4 - Store the array in the localStorage
-    localStorage.setItem('todoTasks', JSON.stringify(tasks));
+    setItemsToLocalStorage();
 
     // Immediately Display the List
       display(tasks, todoListElement);
 
-      document.getElementById('task-value').value = '';
+    //reset the value of task-value to empty string
+    document.getElementById('task-value').value = '';
   }
 
   // deleteTask from the toDo List and also add done functionality
   let deleteAndDoneTask = function(e) {
-    // Prevent the Default behaviour of the target
     
+    // Get the id of the item
     let id = e.target.parentElement.dataset.id;
 
     // Check if the class name is not delete then exit the function else delete the item
@@ -90,20 +99,31 @@
       tasks.splice(id, 1);
 
       // 3 - Append the current tasks in the local storage
-      localStorage.setItem('todoTasks', JSON.stringify(tasks));
+      setItemsToLocalStorage();
 
+      // Display the list
       display(tasks, todoListElement);
+    } else {
+      // Check if checkbox is checked
+      if(e.target.checked === true) {
+        // set done to true
+        tasks[id].done = true;
+  
+        // 3 - Append the current tasks in the local storage
+        setItemsToLocalStorage();
+  
+        // display the list
+        display(tasks, todoListElement);      
+      } else { // else set done to false it it checked again
+        tasks[id].done = false;
 
-    } else if(e.target.checked === true) {
-      tasks[id].done = true;
+        // set the all list to local storage
+        setItemsToLocalStorage();
 
-      // 3 - Append the current tasks in the local storage
-      localStorage.setItem('todoTasks', JSON.stringify(tasks));
-
-      display(tasks, todoListElement);
+        // display the list
+        display(tasks, todoListElement);
+      }
     }
-
-    
   }
 
   // Initialized function
