@@ -113,11 +113,12 @@ body {
   color: green; }
 
 .todo_work {
-  padding-left: 15px; }
+  padding-left: 15px;
+  font-size: 1.2rem; }
 
 .todo_block {
   padding: 1.5rem;
-  width: 375px;
+  width: 325px;
   margin: 0 auto; }
 
 .add_task_block {
@@ -145,5 +146,16 @@ body {
 
 .task_add_btn:focus, .task_value:focus {
   outline: none; }
+
+.greet_block {
+  display: grid;
+  align-content: center;
+  justify-content: center; }
+
+.first_time_block {
+  display: none; }
+
+.greet_user_block {
+  display: none; }
 
 /*# sourceMappingURL=main.css.map */
