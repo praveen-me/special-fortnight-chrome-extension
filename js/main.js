@@ -195,44 +195,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // set greetmsg function 
   // @params : element(elm)
-  let setGreet = function() {
-    // Select Greet msg block
-    let greetMsg = document.querySelector('.greet_msg');
-
+  let setGreet = function(elm) {
     let now = new Date();
     // take hours
     let hours = now.getHours();
     //set greet msg according to hours
-    if(hours >= 4 && hour <= 12) {
-      greetMsg.innerHTML =  'Good Morning';
-    } else if(hours >= 13 && hour <= 16) {
-      greetMsg.innerHTML = 'Good AfterNoon';
-    } else if(hours >= 17 && hour <= 20) {
-      greetMsg.innerHTML = 'Good Evening';
-    } else if(hours >= 21 && hour <= 23){
-      greetMsg.innerHTML = 'Good Night';
+    if(hours >= 4 && hours <= 12) {
+      elm.innerHTML =  'Good Morning';
+    } else if(hours >= 13 && hours <= 16) {
+      elm.innerHTML = 'Good AfterNoon';
+    } else if(hours >= 17 && hours <= 20) {
+      elm.innerHTML = 'Good Evening';
+    } else if(hours >= 21 && hours <= 23){
+      elm.innerHTML = 'Good Night';
     }
   }
 
-  
+  // Select Greet msg block
+  let greetMsg = document.querySelector('.greet_msg');
 
   //RandomIse Array
   let randomIndex = function(array) {
     return Math.floor(Math.random() * array.length);
   }
 
-  // console.log(randomIndex(quotes));
-  console.log(randomIndex(quotes));
-
+  // Functions for set random quotes
   let setQuotes = function(elm1, elm2, array) {
+    // Take a random index by passing array
     let randomIndexOfQuote = randomIndex(array);
-
+    // Add Quotes
     elm1.innerHTML = array[randomIndexOfQuote].quote;
+    // Add Quote author
     elm2.innerHTML = array[randomIndexOfQuote].author;
   }
 
-  let quote_text = document.querySelector('.quote_text');
-  let author_name = document.querySelector('.author_name');
+  //Select Quote text Alement
+  let quoteText = document.querySelector('.quote_text');
+  // Seleect Quote Author element
+  let authorName = document.querySelector('.author_name');
 
   // Initialized function
   function init() {  
@@ -252,10 +252,10 @@ document.addEventListener('DOMContentLoaded', function() {
     checkUserNameValue();
 
     // Set Greet According to Hour
-    setGreet();
+    setGreet(greetMsg);
     
     //Set a new quote when ever the page loads
-    setQuotes(quote_text, author_name, quotes);    
+    setQuotes(quoteText, authorName, quotes);    
   }
 
   init();                         
