@@ -1,4 +1,9 @@
+// Importing Quotes from Quotes.js
+import quotes from './quotes.js'
+
 document.addEventListener('DOMContentLoaded', function() {
+
+  
 
   // add task button  
   let addTaskBtn = document.getElementById('add-task');
@@ -186,26 +191,48 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // Select Greet msg block
-  let greet_msg = document.querySelector('.greet_msg');
+  
 
   // set greetmsg function 
   // @params : element(elm)
-  let setGreet = function(elm) {
+  let setGreet = function() {
+    // Select Greet msg block
+    let greetMsg = document.querySelector('.greet_msg');
+
     let now = new Date();
     // take hours
     let hours = now.getHours();
     //set greet msg according to hours
     if(hours >= 4 && hour <= 12) {
-      elm.innerHTML =  'Good Morning';
+      greetMsg.innerHTML =  'Good Morning';
     } else if(hours >= 13 && hour <= 16) {
-      elm.innerHTML = 'Good AfterNoon';
+      greetMsg.innerHTML = 'Good AfterNoon';
     } else if(hours >= 17 && hour <= 20) {
-      elm.innerHTML = 'Good Evening';
-    } else {
-      elm.innerHTML = 'Good Night';
+      greetMsg.innerHTML = 'Good Evening';
+    } else if(hours >= 21 && hour <= 23){
+      greetMsg.innerHTML = 'Good Night';
     }
   }
+
+  
+
+  //RandomIse Array
+  let randomIndex = function(array) {
+    return Math.floor(Math.random() * array.length);
+  }
+
+  // console.log(randomIndex(quotes));
+  console.log(randomIndex(quotes));
+
+  let setQuotes = function(elm1, elm2, array) {
+    let randomIndexOfQuote = randomIndex(array);
+
+    elm1.innerHTML = array[randomIndexOfQuote].quote;
+    elm2.innerHTML = array[randomIndexOfQuote].author;
+  }
+
+  let quote_text = document.querySelector('.quote_text');
+  let author_name = document.querySelector('.author_name');
 
   // Initialized function
   function init() {  
@@ -225,7 +252,10 @@ document.addEventListener('DOMContentLoaded', function() {
     checkUserNameValue();
 
     // Set Greet According to Hour
-    setGreet(greet_msg);
+    setGreet();
+    
+    //Set a new quote when ever the page loads
+    setQuotes(quote_text, author_name, quotes);    
   }
 
   init();                         
