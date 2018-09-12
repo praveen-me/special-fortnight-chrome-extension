@@ -7,6 +7,10 @@
 //font
 @import "font";
 
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Satisfy');
+
+
+
 body {
   background: url('../img/background.jpg');
   background-position: center;
@@ -17,7 +21,7 @@ body {
 .main {
   display: grid;
   grid-template-columns: 3fr 1.5fr;
-  height: 100vh;
+  height: 90vh;
 }
 
 
@@ -75,7 +79,7 @@ body {
 }
 
 .todo_block {
-  padding: 1.5rem;
+  padding: 4rem 2rem;
   width: 325px;
   margin: 0 auto;
 }
@@ -116,6 +120,7 @@ body {
   display: flex;
   justify-content: center;
   font-size: 7rem;
+  font-family: $font-family;
 }
 
 // Greet Block 
@@ -137,4 +142,47 @@ body {
   display: block;
   font-size: 3rem;
   text-align: center;
+  font-family: $font-family;
+}
+
+//Quotes 
+.inverted_comma_start, .inverted_comma_end {
+  font-size: 2.2rem;
+  margin: 1rem 0;
+  display: inline-block;
+} 
+
+.quote_block {
+  margin: 2rem 0;
+}
+
+.quote {
+  padding: 0 1.5rem;
+  font-family: 'Satisfy', cursive;
+}
+
+.quote_text {
+  font-size: 1.7rem;
+}
+
+.quote_author {
+  display: block;
+  padding-left: 6rem;
+  font-size: 2.2em;
+  color: #fff;
+  margin: 1rem 0;
+  font-family: 'Pacifico', cursive;
+}
+
+footer {
+  height: 10vh;
+  position: absolute;
+  bottom: 0;
+  width : 100%;
+}
+
+.footer_link {
+  color: #fff;
+  font-size: 1.8rem;
+  margin: 0 0.8rem; 
 }

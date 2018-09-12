@@ -145,8 +145,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update innerHTML of hour to current Hours
     hour.innerHTML = now.getHours();
     // Update innerHTML of minutes to current minutes
-    minutes.innerHTML = now.getMinutes();
 
+    if(now.getMinutes() < 10) {
+      minutes.innerHTML = `O${now.getMinutes()}`;
+    } else {
+      minutes.innerHTML = now.getMinutes();
+    }
+    
   }
 
   // First Time Setup
@@ -155,6 +160,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // store greet user block
   let greet_user_block = document.querySelector('.greet_user_block');
+
+  // Select Greet user
+  let greet_user = document.querySelector('.greet_user');
 
   // Set username value for first time
   let setUserNameValues = function(e) {
@@ -169,6 +177,8 @@ document.addEventListener('DOMContentLoaded', function() {
       firstTimeBlock.style.display = 'none';
       //show greet user block
       greet_user_block.style.display = 'block';
+
+      greet_user.innerHTML = localStorage.getItem('userName');
     }
   }
 
@@ -178,16 +188,16 @@ document.addEventListener('DOMContentLoaded', function() {
     if(localStorage.getItem('userName') === null) {
       //is it is then display first time block
       firstTimeBlock.style.display = 'block';
+
+      greet_user_block.style.display = 'none';
       // set an event listner for taking userName and set it
       document.body.addEventListener('keypress', setUserNameValues);
     } else { // if it's not then display a greet message
       // display greet user block
       greet_user_block.style.display = 'block';
 
-      // Select Greet user
-      let greet_user = document.querySelector('.greet_user');
       // Retrive userName value from local storage and set it to greet user element
-      greet_user.innerHTML = localStorage.getItem('userName');;
+      greet_user.innerHTML = localStorage.getItem('userName');
     }
   }
 
