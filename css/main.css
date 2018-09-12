@@ -104,7 +104,8 @@ body {
     border-top-right-radius: 5px; }
   .todo_list_item:last-child {
     border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px; }
+    border-bottom-right-radius: 5px;
+    border: none; }
   .todo_list_item:hover {
     transform: scale(1.02);
     box-shadow: -4px -2px 8px 0px inset #292626; }
