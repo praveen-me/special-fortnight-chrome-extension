@@ -171,10 +171,11 @@ body {
   text-align: center;
   font-family: "Dosis", sans-serif; }
 
-.inverted_comma_start, .inverted_comma_end {
+.inverted_comma_start {
   font-size: 2.2rem;
   margin: 1rem 0;
-  display: inline-block; }
+  display: inline-block;
+  color: #e4bf58; }
 
 .quote_block {
   margin: 2rem 0;
@@ -185,7 +186,8 @@ body {
   font-family: 'Satisfy', cursive; }
 
 .quote_text {
-  font-size: 1.7rem; }
+  font-size: 1.7rem;
+  color: #e4bf58; }
 
 .quote_author {
   display: block;

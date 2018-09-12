@@ -1,6 +1,8 @@
 // Importing Quotes from Quotes.js
 import quotes from './quotes.js'
 
+import url from './images-url.js';
+
 document.addEventListener('DOMContentLoaded', function() {
   
   // add task button  
@@ -242,6 +244,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // display greet user block
       greet_user_block.style.display = 'block';
 
+      // display quote block
       quoteBlock.style.display = 'block';
 
       // setting user details when page loads
@@ -290,6 +293,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // Seleect Quote Author element
   let authorName = document.querySelector('.author_name');
 
+
+  //Set random background 
+  let setRandomBackground = function() {
+    let randomURLIndex = randomIndex(url);
+
+    document.body.setAttribute('style', `background : linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url('${url[randomURLIndex]}`);
+  }
+
   // Initialized function
   function init() {  
     // Display tasks on page loads
@@ -311,7 +322,10 @@ document.addEventListener('DOMContentLoaded', function() {
     setGreet(greetMsg);
     
     //Set a new quote when ever the page loads
-    setQuotes(quoteText, authorName, quotes);    
+    setQuotes(quoteText, authorName, quotes);
+    
+    //set random background 
+    setRandomBackground();
   }
 
   init();                         
