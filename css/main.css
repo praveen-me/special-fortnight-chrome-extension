@@ -177,7 +177,8 @@ body {
   display: inline-block; }
 
 .quote_block {
-  margin: 2rem 0; }
+  margin: 2rem 0;
+  display: none; }
 
 .quote {
   padding: 0 1.5rem;
@@ -204,5 +205,30 @@ footer {
   color: #fff;
   font-size: 1.8rem;
   margin: 0 0.8rem; }
+
+.first_time_block_header {
+  color: #f5d19c;
+  font-size: 2rem;
+  margin: 1rem 0;
+  font-family: "Dosis", sans-serif;
+  font-weight: 500; }
+
+.first_time_block input {
+  display: block;
+  margin: 1.5rem 0;
+  line-height: 1.5rem;
+  width: 100%;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #fff;
+  text-align: center;
+  font-family: "Dosis", sans-serif;
+  font-weight: 500; }
+  .first_time_block input::placeholder {
+    color: #fff; }
+  .first_time_block input:focus {
+    outline: none; }
 
 /*# sourceMappingURL=main.css.map */

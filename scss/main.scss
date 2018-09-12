@@ -154,6 +154,7 @@ body {
 
 .quote_block {
   margin: 2rem 0;
+  display: none;
 }
 
 .quote {
@@ -185,4 +186,35 @@ footer {
   color: #fff;
   font-size: 1.8rem;
   margin: 0 0.8rem; 
+}
+
+// First Time Block CSS
+.first_time_block_header {
+  color: #f5d19c;
+  font-size: 2rem;
+  margin: 1rem 0;
+  font-family: $font-family;
+  font-weight: 500;
+}
+
+.first_time_block input {
+  display: block;
+  margin: 1.5rem 0;
+  line-height: 1.5rem;
+  width: 100%;
+  background: transparent;
+  color: #fff;
+  border: none;
+  font-size: 1.2rem;
+  border-bottom: 2px solid #fff;
+  text-align: center;
+  font-family: $font-family;
+  font-weight: 500;
+  &::placeholder {
+    color: #fff;
+    
+  }
+  &:focus {
+    outline: none;
+  }
 }

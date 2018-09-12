@@ -2,9 +2,7 @@
 import quotes from './quotes.js'
 
 document.addEventListener('DOMContentLoaded', function() {
-
   
-
   // add task button  
   let addTaskBtn = document.getElementById('add-task');
 
@@ -35,8 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }).join(''); // Join the array and convert it in a string and then addd to the element
 
     // Call checkDoneItems for checking items are done or not
-    checkDoneItems();
-  
+    checkDoneItems(); 
   }
 
   // Check Done Items When Page loads
@@ -150,8 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
       minutes.innerHTML = `O${now.getMinutes()}`;
     } else {
       minutes.innerHTML = now.getMinutes();
-    }
-    
+    }  
   }
 
   // First Time Setup
@@ -161,47 +157,97 @@ document.addEventListener('DOMContentLoaded', function() {
   // store greet user block
   let greet_user_block = document.querySelector('.greet_user_block');
 
-  // Select Greet user
-  let greet_user = document.querySelector('.greet_user');
+  // block element
+  let quoteBlock = document.querySelector('.quote_block');
+
+  //User Details Array
+  let userDetails = [];
+
+  //Set User Deatils
+  let setUserDetails = function() {
+    // Parse the userDeatils Array
+    let parsedUserDetails = JSON.parse(localStorage.getItem('userDetails'));
+
+    // Select Greet user
+    let greetUser = document.querySelector('.greet_user');
+
+    //Github element
+    let githubLink = document.getElementById('github_link');
+    // twitter elment
+    let twitterLink = document.getElementById('twitter_link');
+    // medium element
+    let mediumLink = document.getElementById('medium_link');
+    //linkedin elment
+    let linkedinLink = document.getElementById('linkedin_link');
+    // setting user name value
+    greetUser.innerHTML = parsedUserDetails[0];
+    // setting github link
+    githubLink.setAttribute('href', `https://github.com/${parsedUserDetails[1]}`);
+    // setting twitter link 
+    twitterLink.setAttribute('href', `https://twitter.com/${parsedUserDetails[2]}`);
+    // setting medium link
+    mediumLink.setAttribute('href', `https://medium.com/@${parsedUserDetails[3]}`);
+    // setting linkedin link
+    linkedinLink.setAttribute('href', `https://linkedin.com/in/${parsedUserDetails[4]}`);
+  }
 
   // Set username value for first time
-  let setUserNameValues = function(e) {
+  let getUserNameValues = function(e) {
     // select userName value
     let userNameValue = document.getElementById('user_name').value;
 
+    let githubValue = document.getElementById('github_value').value;
+
+    let twitter_value = document.getElementById('twitter_value').value;
+
+    let medium_value = document.getElementById('medium_value').value;
+
+    let linkedin_value = document.getElementById('linkedin_value').value;
+
     // Check wheather the keypress is 'Enter' key for setting userName value
     if(e.keyCode === 13) {
+
+      userDetails.push(userNameValue);
+      userDetails.push(githubValue);
+      userDetails.push(twitter_value);
+      userDetails.push(medium_value);
+      userDetails.push(linkedin_value);
+
       // if it is then set userName value in localstorage
-      JSON.stringify(localStorage.setItem('userName', userNameValue));
+      localStorage.setItem('userDetails', JSON.stringify(userDetails));
       //hide first time block
       firstTimeBlock.style.display = 'none';
+
       //show greet user block
       greet_user_block.style.display = 'block';
+      // setting user deatils
+      setUserDetails();
 
-      greet_user.innerHTML = localStorage.getItem('userName');
+      // Setting quotes to display
+      quoteBlock.style.display = 'block';
     }
   }
 
   // Check wheather the userName is stored or not
   let checkUserNameValue = function() {
     // check wheather localStorage has userName or not
-    if(localStorage.getItem('userName') === null) {
+    if(localStorage.getItem('userDetails') === null) {
       //is it is then display first time block
       firstTimeBlock.style.display = 'block';
 
       greet_user_block.style.display = 'none';
       // set an event listner for taking userName and set it
-      document.body.addEventListener('keypress', setUserNameValues);
+      document.body.addEventListener('keypress', getUserNameValues);
     } else { // if it's not then display a greet message
       // display greet user block
       greet_user_block.style.display = 'block';
 
-      // Retrive userName value from local storage and set it to greet user element
-      greet_user.innerHTML = localStorage.getItem('userName');
+      quoteBlock.style.display = 'block';
+
+      // setting user details when page loads
+      setUserDetails();
     }
   }
-
-  
 
   // set greetmsg function 
   // @params : element(elm)

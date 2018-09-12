@@ -25,15 +25,20 @@
         </div>
       </div>
       <div class="first_time_block">
-        <h1 class="first_time_block_header">Enter Your Name</h1>
-        <input type="text" name="" id="user_name">
+        <h1 class="first_time_block_header">Enter Your Details</h1>
+        <input type="text" name="" id="user_name" placeholder="Enter Your Name">
+        <input type="text" id="github_value" placeholder="Github Username">
+        <input type="text" id="twitter_value" placeholder="Twitter Username"> 
+        <input type="text" id="medium_value" placeholder="Medium Username">
+        <input type="text" id="linkedin_value" placeholder="Linkedin UserName">
+
       </div>
       <div class="greet_user_block">
         <h1><span class="greet_msg"></span>, <span class="greet_user"></span></h1>
       </div>
       <div class="quote_block">
         <div class="quote center"><span class="inverted_comma_start"><i class="fas fa-quote-left"></i></span><p class="quote_text">|</p></div>
-        <div class="quote_author"><span class="author_name">Praveen</span></div>
+        <div class="quote_author"><span class="author_name"></span></div>
       </div>
     </div>
     <!-- Todo List -->
@@ -54,16 +59,16 @@
 
   <!-- Footer -->
   <footer class="center">
-    <a href="https://github.com/praveen-me" class="footer_link">
+    <a class="footer_link" id="github_link">
       <i class="fab fa-github"></i>
     </a>
-    <a href="https://medium.com/@praveenkrsaini0" class="footer_link">
-        <i class="fab fa-medium-m"></i>
-    </a>
-    <a href="https://twitter.com/am_pra_veen" class="footer_link">
+    <a class="footer_link" id="twitter_link">
         <i class="fab fa-twitter"></i>
     </a>
-    <a href="https://www.linkedin.com/in/praveen-kumar-saini-137b07159/" class="footer_link">
+    <a class="footer_link" id="medium_link">
+      <i class="fab fa-medium-m"></i>
+    </a>
+    <a class="footer_link" id="linkedin_link">
         <i class="fab fa-linkedin-in"></i>
     </a>
   </footer>
