@@ -220,3 +220,21 @@ footer {
     outline: none;
   }
 }
+
+
+//Reset All Data
+.reset_data {
+  font-family: $font-family;
+  position: absolute;
+  right: 2%;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  border-radius: 3px;
+  background: #82031b;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background: #b10323; 
+  }
+}

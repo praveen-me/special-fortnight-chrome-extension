@@ -141,15 +141,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // store minute elementy
     let minutes = document.getElementById('minutes');
 
-    // Update innerHTML of hour to current Hours
-    hour.innerHTML = now.getHours();
-    // Update innerHTML of minutes to current minutes
-
+    // if minutes and hour are less than 10 add 0 ahead hour and minute
+    
     if(now.getMinutes() < 10) {
       minutes.innerHTML = `O${now.getMinutes()}`;
+    } else { // if not left as it is
+      minutes.innerHTML = now.getMinutes();      
+    }
+    
+    if( now.getHours() < 10) {
+      hour.innerHTML = `O${now.getHours()}`;
     } else {
-      minutes.innerHTML = now.getMinutes();
-    }  
+      hour.innerHTML = now.getHours();
+    }
   }
 
   // First Time Setup
@@ -258,6 +262,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let now = new Date();
     // take hours
     let hours = now.getHours();
+
     //set greet msg according to hours
     if(hours >= 4 && hours <= 12) {
       elm.innerHTML =  'Good Morning';
@@ -266,6 +271,8 @@ document.addEventListener('DOMContentLoaded', function() {
     } else if(hours >= 17 && hours <= 20) {
       elm.innerHTML = 'Good Evening';
     } else if(hours >= 21 && hours <= 23){
+      elm.innerHTML = 'Good Night';
+    } else if(hours >= 0 && hours <= 3) {
       elm.innerHTML = 'Good Night';
     }
   }
@@ -298,8 +305,19 @@ document.addEventListener('DOMContentLoaded', function() {
   let setRandomBackground = function() {
     let randomURLIndex = randomIndex(url);
 
+    // set random background
     document.body.setAttribute('style', `background : linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url('${url[randomURLIndex]}`);
   }
+
+  //reset all data if reset all data button clicked
+  let resetData = function() {
+    localStorage.removeItem('userDetails');
+    localStorage.removeItem('todoTasks');
+    alert('All Data Cleared');
+  }
+
+  //reset button
+  let resetIt = document.getElementById('reset-data');
 
   // Initialized function
   function init() {  
@@ -326,6 +344,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     //set random background 
     setRandomBackground();
+
+    resetIt.addEventListener('click', resetData);
   }
 
   init();                         

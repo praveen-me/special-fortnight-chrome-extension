@@ -233,4 +233,18 @@ footer {
   .first_time_block input:focus {
     outline: none; }
 
+.reset_data {
+  font-family: "Dosis", sans-serif;
+  position: absolute;
+  right: 2%;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  border-radius: 3px;
+  background: #82031b;
+  color: #fff;
+  border: none;
+  cursor: pointer; }
+  .reset_data:hover {
+    background: #b10323; }
+
 /*# sourceMappingURL=main.css.map */
