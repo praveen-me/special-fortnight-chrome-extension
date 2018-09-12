@@ -75,7 +75,8 @@ body {
 
 .main {
   display: grid;
-  grid-template-columns: 3fr 1.5fr; }
+  grid-template-columns: 3fr 1.5fr;
+  height: 100vh; }
 
 .todo_list_header {
   font-family: "Dosis", sans-serif;
@@ -147,6 +148,11 @@ body {
 .task_add_btn:focus, .task_value:focus {
   outline: none; }
 
+.time {
+  display: flex;
+  justify-content: center;
+  font-size: 7rem; }
+
 .greet_block {
   display: grid;
   align-content: center;
@@ -156,6 +162,10 @@ body {
   display: none; }
 
 .greet_user_block {
-  display: none; }
+  display: none;
+  color: #fff1f1;
+  display: block;
+  font-size: 3rem;
+  text-align: center; }
 
 /*# sourceMappingURL=main.css.map */
