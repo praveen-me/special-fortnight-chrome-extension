@@ -28,6 +28,10 @@ body {
 // Todo list
 
 // Todo Header
+.todo-list {
+  margin: 2rem 0;
+}
+
 .todo_list_header {
   font-family: $font-family;
   font-size: 2.5rem;
@@ -37,15 +41,26 @@ body {
 
 // List Items
 .todo_list_item {
-    display: grid;
-    background-color: #fff;
-    line-height: 3rem;
-    margin: 1rem 0;
-    grid-template-columns: 1fr 12fr 1fr;
-    align-items: center;
-    font-size: 1.5rem;
-    font-family: $font-family;
-    border-radius: 5px;
+  display: grid;
+  background-color: #fff;
+  line-height: 3rem;
+  grid-template-columns: 1fr 12fr 1fr;
+  align-items: center;
+  font-size: 1.5rem;
+  font-family: $font-family;
+  border-bottom: 1px solid #ddd;
+  transform: scale(1);
+  transition:  all ease 0.3s;
+  &:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }&:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }&:hover {
+    transform: scale(1.02);
+    box-shadow: -4px -2px 8px 0px inset #292626;
+  }
 }
 
 //delete Button
@@ -69,7 +84,6 @@ body {
 
 .done.true .todo_work {
   font-weight: normal;
-  color: green;
 }
 
 // Work 
@@ -109,6 +123,9 @@ body {
   cursor: pointer;
   border-bottom-right-radius: 4px;
   border-top-right-radius: 5px;
+  &:hover {
+    background: #a85567;
+  }
 }
 
 .task_add_btn:focus, .task_value:focus {
