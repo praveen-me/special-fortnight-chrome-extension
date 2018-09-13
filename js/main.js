@@ -132,27 +132,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  // store hour element
+  let hourElm  = document.getElementById('hour');
+  // store minute elementy
+  let minutesElm = document.getElementById('minutes');
+
   // Function for setDate
-  let setTime = function() {
+  let setTime = function(hourElm, minuteElm) {
     // store date
     let now = new Date();
-    // store hour element
-    let hour = document.getElementById('hour');
-    // store minute elementy
-    let minutes = document.getElementById('minutes');
 
     // if minutes and hour are less than 10 add 0 ahead hour and minute
-    
     if(now.getMinutes() < 10) {
-      minutes.innerHTML = `O${now.getMinutes()}`;
+      minuteElm.innerHTML = `O${now.getMinutes()}`;
     } else { // if not left as it is
-      minutes.innerHTML = now.getMinutes();      
+      minuteElm.innerHTML = now.getMinutes();      
     }
     
     if( now.getHours() < 10) {
-      hour.innerHTML = `O${now.getHours()}`;
+      hourElm.innerHTML = `O${now.getHours()}`;
     } else {
-      hour.innerHTML = now.getHours();
+      hourElm.innerHTML = now.getHours();
     }
   }
 
@@ -331,7 +331,9 @@ document.addEventListener('DOMContentLoaded', function() {
     todoListElement.addEventListener('click', deleteAndDoneTask);
 
     //recall setDate function after 1s;
-    setInterval(setTime, 1000);
+    setInterval(function() {
+      setTime(hourElm, minutesElm);
+    }, 1000);
     
     // call function for checkUserName available in local Storage or not
     checkUserNameValue();
