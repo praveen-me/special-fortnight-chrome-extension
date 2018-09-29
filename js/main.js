@@ -303,10 +303,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
   //Set random background 
   let setRandomBackground = function() {
-    let randomURLIndex = randomIndex(url);
+    let link = 'https://api.unsplash.com/collections/311028/photos/';
+    let accessToken = '?per_page=30&client_id=7200cb58d12b5b5169a2904f02f480b1d9381716781e631cba49cfc2ed9e8cd7'
+    let url = link+accessToken;
 
-    // set random background
-    document.body.setAttribute('style', `background : linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),url('${url[randomURLIndex]}`);
+    fetch(url).then(response => {
+       return response.json().then(images => {
+         let i = randomIndex(images);
+         console.log(i)
+         document.body.setAttribute('style', `background : linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url('${images[i].urls.regular}');
+         background-position: center;
+         background-size: cover;
+         background-repeat: no-repeat;
+         `);
+        console.log(images[i]);
+       })
+    })
+
   }
 
   //reset all data if reset all data button clicked

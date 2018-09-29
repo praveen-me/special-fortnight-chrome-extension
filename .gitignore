@@ -1,0 +1,4 @@
+.cache
+.sass-cache
+dist
+/css/main.css.map

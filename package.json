@@ -1,0 +1,20 @@
+{
+  "name": "special-fortnight-chrome-extension",
+  "version": "1.0.0",
+  "description": "This is a customizable chrome extension that helps you in making todo and other stuff.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/praveen-me/special-fortnight-chrome-extension.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/praveen-me/special-fortnight-chrome-extension/issues"
+  },
+  "homepage": "https://github.com/praveen-me/special-fortnight-chrome-extension#readme"
+}
