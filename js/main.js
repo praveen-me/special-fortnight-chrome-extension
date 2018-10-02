@@ -11,9 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // add weather button 
   let cityBtn = document.getElementById("add-city");
 
-  // form field for city
-  var city_field = document.getElementById("city_value")
-
   // select ul of todo list
   let todoListElement = document.querySelector('.todo-list');
 
@@ -339,6 +336,9 @@ document.addEventListener('DOMContentLoaded', function () {
   let resetIt = document.getElementById('reset-data');
 
   function setCity(city) {
+    // form field for city
+    var city_field = document.getElementById("city_value")
+
     let city_val = city_field.value;
 
     localStorage.setItem('city', city_val);
@@ -350,54 +350,57 @@ document.addEventListener('DOMContentLoaded', function () {
     let city = String(localStorage.getItem("city"));
     console.log(city);
     if (city == null) {
-      console.log("No city set")
+      console.log("Error: No city set")
     }
     else {
-      let city_title_elem = document.getElementById("city_title");
-      city_title_elem.innerHTML = city;
+
       fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&mode=json&units=metric&APPID=`)
-      .then(
-        function (response) {
-          if (response.status !== 200) {
-            console.log('Sorry, there was a problem fetching the weather data. Status Code:' +
-              response.status);
-            return;
+        .then(
+          function (response) {
+            if (response.status !== 200) {
+              console.log('Sorry, there was a problem fetching the weather data. Status Code:' +
+                response.status);
+              return;
+            }
+
+            response.json().then(function (data) {
+              // Update city title element
+              let city_title_elem = document.getElementById("city_title");
+              city_title_elem.innerHTML = data.name;
+
+              // Assign weather descriptions to variables for clarity
+              let description = data.weather[0].description
+              let main_weather_description = data.weather[0].main
+
+              // Update weather description elements
+              let main_description_elem = document.getElementById("main_description")
+              main_description_elem.innerHTML = main_weather_description;
+
+              let description_elem = document.getElementById("detailed_description")
+              description_elem.innerHTML = description;
+
+              let temperature_elem = document.getElementById("temp");
+              temperature_elem.innerHTML = `${data.main.temp} °C`;
+
+              // Optional: can include icon image also, but not implemented currently.
+              let icon_code = data.weather[0].icon;
+
+              let icon_img = document.getElementById("weather_icon");
+            });
           }
-
-          // Examine the text in the response
-          response.json().then(function (data) {
-            console.log(data);
-            console.log(data.weather)
-            let description = data.weather[0].description
-            let main_weather_description = data.weather[0].main
-
-            let main_description_elem = document.getElementById("main_description")
-            main_description_elem.innerHTML = main_weather_description;
-
-            let description_elem = document.getElementById("detailed_description")
-            description_elem.innerHTML = description;
-
-            let temperature_elem = document.getElementById("temp");
-            temperature_elem.innerHTML = `${data.main.temp} °C`;
-
-            let icon_code = data.weather[0].icon;
-
-            let icon_img = document.getElementById("weather_icon");
+        )
+        .catch(function (err) {
+          console.log('Fetch Error :-S', err);
         });
-        }
-      )
-      .catch(function (err) {
-        console.log('Fetch Error :-S', err);
-      });
 
     }
 
 
   }
-  
+
   function procImage(icon) {
-      icon.height = 12;
-      icon.width = 12;    
+    icon.height = 12;
+    icon.width = 12;
   }
 
   // Initialized function
