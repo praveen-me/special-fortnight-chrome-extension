@@ -260,4 +260,27 @@ footer {
   .reset_data:hover {
     background: #b10323; }
 
+#temp {
+  font-family: Dosis, sans-serif;
+  font-size: 4em;
+}
+
+.flexbox_horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.weather_heading {
+  font-family: Dosis;
+}
+
+#change_city {
+  margin-top: 1em;
+}
+
+#main_description {
+  font-size: 2em;
+}
+
 /*# sourceMappingURL=main.css.map */

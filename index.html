@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
 
   <!-- Custom CSS -->
   <link rel="stylesheet" type="text/css" media="screen" href="./css/main.css" />
 </head>
+
 <body>
   <!-- Main Block -->
   <main class="main">
+
     <!-- Main Time Block -->
     <div class="greet_block">
       <div class="date_block">
@@ -28,7 +32,7 @@
         <h1 class="first_time_block_header">Enter Your Details</h1>
         <input type="text" name="" id="user_name" placeholder="Enter Your Name">
         <input type="text" id="github_value" placeholder="Github Username">
-        <input type="text" id="twitter_value" placeholder="Twitter Username"> 
+        <input type="text" id="twitter_value" placeholder="Twitter Username">
         <input type="text" id="medium_value" placeholder="Medium Username">
         <input type="text" id="linkedin_value" placeholder="Linkedin Username">
 
@@ -37,7 +41,9 @@
         <h1><span class="greet_msg"></span>, <span class="greet_user"></span></h1>
       </div>
       <div class="quote_block">
-        <div class="quote center"><span class="inverted_comma_start"><i class="fas fa-quote-left"></i></span><p class="quote_text"></p></div>
+        <div class="quote center"><span class="inverted_comma_start"><i class="fas fa-quote-left"></i></span>
+          <p class="quote_text"></p>
+        </div>
         <div class="quote_author"><span class="author_name"></span></div>
       </div>
     </div>
@@ -56,24 +62,27 @@
       </div>
     </div>
 
-    <div class="todo_block">
-      <div class="todo_list_block">
-        <h2 class="todo_list_header center color-white">Weather</h2>
-        <!-- Dynamically Todo List -->
-        <ul class="todo-list">
-        </ul>
-        <!-- Block for Adding New Task -->
-        <div class="add_task_block">
-          <input type="text" class="city_value" id="city_value">
-          <button class="city_add_btn" id="add-city">Enter City</button>
-        </div>
-        <div class="color-white">
-          <p id="main_description"></p>
-          <p id="detailed_description"></p>
-        </div>
+    <div class="">
+      <h2 class="center color-white weather_heading" id="city_title"></h2>
+      <!-- Block for Adding New Task -->
 
+      <div class="color-white">
+        <div class="center flexbox_horizontal">
+          <h2 id="temp" class="todo_list_header weather_heading"></h2>
+          <h3 class="weather_heading" id="main_description"></h3>  
+          <p id="detailed_description" class="center weather_heading"></p>
+
+        </div>
       </div>
+      <div class="add_task_block" id="change_city">
+        <input type="text" class="city_value" id="city_value">
+        <button class="city_add_btn" id="add-city">Enter City</button>
+      </div>
+      
+
     </div>
+
+
   </main>
 
   <!-- Footer -->
@@ -82,13 +91,13 @@
       <i class="fab fa-github"></i>
     </a>
     <a class="footer_link" id="twitter_link">
-        <i class="fab fa-twitter"></i>
+      <i class="fab fa-twitter"></i>
     </a>
     <a class="footer_link" id="medium_link">
       <i class="fab fa-medium-m"></i>
     </a>
     <a class="footer_link" id="linkedin_link">
-        <i class="fab fa-linkedin-in"></i>
+      <i class="fab fa-linkedin-in"></i>
     </a>
 
     <button class="reset_data" id="reset-data">Reset All Data</button>
@@ -97,4 +106,5 @@
   <!-- Script -->
   <script src="./js/main.js" type="module"></script>
 </body>
+
 </html>

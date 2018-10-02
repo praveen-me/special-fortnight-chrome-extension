@@ -9,7 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
   let addTaskBtn = document.getElementById('add-task');
 
   // add weather button 
-  let cityBtn = document.getElementById("add-city")
+  let cityBtn = document.getElementById("add-city");
+
+  // form field for city
+  var city_field = document.getElementById("city_value")
 
   // select ul of todo list
   let todoListElement = document.querySelector('.todo-list');
@@ -335,11 +338,24 @@ document.addEventListener('DOMContentLoaded', function () {
   //reset button
   let resetIt = document.getElementById('reset-data');
 
-  function getWeatherDetails() {
-    let city_field = document.getElementById("city_value")
-    let city = city_field.value;
+  function setCity(city) {
+    let city_val = city_field.value;
 
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&mode=json&APPID=`)
+    localStorage.setItem('city', city_val);
+    getWeatherDetails();
+  }
+
+  function getWeatherDetails() {
+    // Set to local storage
+    let city = String(localStorage.getItem("city"));
+    console.log(city);
+    if (city == null) {
+      console.log("No city set")
+    }
+    else {
+      let city_title_elem = document.getElementById("city_title");
+      city_title_elem.innerHTML = city;
+      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&mode=json&units=metric&APPID=`)
       .then(
         function (response) {
           if (response.status !== 200) {
@@ -360,14 +376,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
             let description_elem = document.getElementById("detailed_description")
             description_elem.innerHTML = description;
-          });
+
+            let temperature_elem = document.getElementById("temp");
+            temperature_elem.innerHTML = `${data.main.temp} °C`;
+
+            let icon_code = data.weather[0].icon;
+
+            let icon_img = document.getElementById("weather_icon");
+        });
         }
       )
       .catch(function (err) {
         console.log('Fetch Error :-S', err);
       });
 
+    }
 
+
+  }
+  
+  function procImage(icon) {
+      icon.height = 12;
+      icon.width = 12;    
   }
 
   // Initialized function
@@ -383,7 +413,7 @@ document.addEventListener('DOMContentLoaded', function () {
     todoListElement.addEventListener('click', deleteAndDoneTask);
 
     // Add event listener to check if the city has been entered by the user
-    cityBtn.addEventListener("click", getWeatherDetails)
+    cityBtn.addEventListener("click", setCity)
 
     //recall setDate function after 1s;
     setInterval(function () {
@@ -403,6 +433,8 @@ document.addEventListener('DOMContentLoaded', function () {
     setRandomBackground();
 
     resetIt.addEventListener('click', resetData);
+
+    getWeatherDetails();
   }
 
   init();
