@@ -406,7 +406,7 @@ export default quotes =
       "author": "Steve Jobs"
     },
     {
-      "quote": "You want to be the pebble in the pond that creates the ripple for change."
+      "quote": "You want to be the pebble in the pond that creates the ripple for change.",
       "author":"Tim Cook"
     },
     {
