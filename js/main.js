@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     else {
 
-      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&mode=json&units=metric&APPID=`)
+      fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&mode=json&units=metric&APPID=5437540a4b1f9a06516d43ed1ef3d5ee`)
         .then(
           function (response) {
             if (response.status !== 200) {
